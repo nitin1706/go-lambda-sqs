@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  golang-lambda-sqs
+
+  Sample SAM Template for golang-lambda-sqs
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  GoLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: go-lambda-sqs/
+      Handler: handler
+      Runtime: go1.x
+      #Events:
+        #HelloWorld:
+          #Type: Api
+          #Properties:
+            #Path: /hello
+            #Method: get
+
+Outputs:
+  #HelloWorldApi:
+    #Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    #Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+  GoLambdaFunction:
+    Description: "GoLang Lambda Function ARN"
+    Value: !GetAtt GoLambdaFunction.Arn
+  GoLambdaFunctionIamRole:
+    Description: "Implicit IAM Role created for Sam GoLang Lambda function"
+    Value: !GetAtt GoLambdaFunctionRole.Arn
