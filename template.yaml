@@ -13,7 +13,7 @@ Resources:
   GoLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: go-lambda-sqs/
+      CodeUri: handler.go
       Handler: handler
       Runtime: go1.x
       #Events:
